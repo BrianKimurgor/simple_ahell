@@ -123,14 +123,14 @@ int loophsh(char **);
 /*toem_errors.c */
 void _eputs(char *);
 int _eputchar(char);
-int _putfd(charc, int fd);
+int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
 /* toem_string.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
-char *_strcat(char * char *);
+char *_strcat(char *);
 
 /* toem_string1.c */
 char *_strcpy(char *, char *);

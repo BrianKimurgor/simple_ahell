@@ -2,7 +2,7 @@
 
 /**
  * get_environ - returns string array copy of our environ
- * @info: sruc containing potential arguments that maintains constaont func prototype
+ * @info: sruc containing arguments maintaining func prototype
  * Retrun: 0
  */
 
@@ -10,7 +10,7 @@ char **get_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
-		info->environ = list_to_string(info->env);
+		info->environ = list_to_string(info->environ);
 		info->env_changed = 0;
 	}
 	return (info->environ);
@@ -58,7 +58,7 @@ int _unsetenv(info_t *info, var *var)
  */
 int _setenv(info_t *info, char *var, char *value)
 {
-	char *buf =NULL;
+	char *buf = NULL;
 	list_t *node;
 	char *p;
 
