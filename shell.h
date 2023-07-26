@@ -92,10 +92,11 @@ typedef struct passinfo
 	int cmd_buf_type;/* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
-}info_t;
+} info_t;
 
 #define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \ 0, 0, 0}
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+0, 0, 0}
 
 /**
  * struct builtin - contains a builtin string and related function
@@ -107,7 +108,7 @@ typedef struct builtin
 {
 	char *type;
 	int (*func)(info_t*);
-}builtin_table;
+} builtin_table;
 
 /* toem_shloop.c */
 int hsh(info_t *, char **);
@@ -182,7 +183,7 @@ int _myalias(info_t *);
 
 /* toem_getline.c */
 ssize_t get_input(info_t *);
-int _getline(info_t *,char **, size_t *);
+int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
 
 /* toem_getinfo.c */
@@ -209,7 +210,7 @@ int build_history_list(info_t *info, char *buf, int linecount);
 int renumber_history(info_t *info);
 
 /* toem_lists.c */
-list_t *add_node(list_t **, const char *,int);
+list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
 size_t print_list_str(const list_t *);
 int delete_node_at_index(list_t **, unsigned int);
