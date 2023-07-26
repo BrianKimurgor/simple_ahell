@@ -48,7 +48,6 @@ int num;
 char *str;
 struct liststr *next;
 } list_t;
-
 /**
  * struct passinfo - contains pseudo-arguments to passinto a function,
  *   allowing uniform prototype for function pointer struct
@@ -96,7 +95,7 @@ typedef struct passinfo
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-0, 0, 0}
+	0, 0, 0}
 
 /**
  * struct builtin - contains a builtin string and related function
@@ -109,7 +108,6 @@ typedef struct builtin
 	char *type;
 	int (*func)(info_t*);
 } builtin_table;
-
 /* toem_shloop.c */
 int hsh(info_t *, char **);
 int find_builtin(info_t *);
