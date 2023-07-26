@@ -29,6 +29,7 @@ char **list_to_strings(list_t *head)
 	list_t *node = head;
 	size_t i = list_len(head), j;
 	char **strs;
+	char *str;
 
 	if (!head || !i)
 		return (NULL);
@@ -37,7 +38,7 @@ char **list_to_strings(list_t *head)
 		return (NULL);
 	for (i = 0; node; node = node->next, i++)
 	{
-		str = malloc(_strlen(node->) + 1);
+		str = malloc(_strlen(node->str) + 1);
 		if (!str)
 		{
 			for (j = 0; j < i; j++)
@@ -64,7 +65,7 @@ size_t print_list(const list_t *h)
 	while (h)
 	{
 		_puts(convert_number(h->num, 10, 0));
-		_putchar(':')
+		_putchar(':');
 			_putchar(' ');
 		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
@@ -81,7 +82,7 @@ size_t print_list(const list_t *h)
  * @c: next character after prefix match
  * Return: match node or null
  */
-
+list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
 
@@ -110,7 +111,7 @@ ssize_t get_node_index(list_t *head, list_t *node)
 	{
 		if (head == node)
 			return (i);
-		head = head->;
+		head = head->next;
 		i++;
 	}
 	return (-1);
