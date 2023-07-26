@@ -10,7 +10,7 @@ char **get_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
-		info->environ = list_to_strings(info->environ);
+		info->environ = list_to_strings(info->env);
 		info->env_changed = 0;
 	}
 	return (info->environ);
@@ -23,7 +23,7 @@ char **get_environ(info_t *info)
  * Return: 1on delete 0 otherwise
  */
 
-int _unsetenv(info_t *info, var *var)
+int _unsetenv(info_t *info, char *var)
 {
 	char *p;
 	size_t i = 0;
@@ -69,8 +69,8 @@ int _setenv(info_t *info, char *var, char *value)
 	if (!buf)
 		return (1);
 	_strcpy(buf, var);
-	_strcat(buf, value);
 	_strcat(buf, "=");
+	_strcat(buf, value);
 	node = info->env;
 	while (node)
 	{
