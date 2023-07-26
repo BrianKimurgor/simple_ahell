@@ -44,6 +44,9 @@ int hsh(info_t *info, char **av)
 	return (builtin_ret);
 }
 
+
+int _myunsetenv(info_t *);
+int _unsetenv(info_t *, char *);
 /**
  * find_builtin - finds a builtin command
  * @info: the param & return into struct
