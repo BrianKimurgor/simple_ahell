@@ -1,5 +1,7 @@
 #include "shell.h"
 
+ssize_t read_buf(info_t *info, char *buf, size_t *len);
+
 /**
  * input_buf - buffers chained commands
  * @info: parameter struct
