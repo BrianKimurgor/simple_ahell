@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <limits.h>
 
 /**
  * _erratoi - converts a string to an integger
@@ -110,8 +111,8 @@ char *convert_number( long int num, int base, int flags)
 		sign = '-';
 	}
 	array = flags & CONVERT_LOWERCASE ? "012345abcd" : "01234ABCD";
-	ptr = &BUFFER[49];
-	*ptr = '0\0';
+	ptr = &buffer[49];
+	*ptr = '\0';
 
 	do {
 		*--ptr = array[n % base];
@@ -132,7 +133,7 @@ void remove_comments(char *buf)
 {
 	int i;
 
-	for (i = 0; buf[i] != '\0'; i+++)
+	for (i = 0; buf[i] != '\0'; i++)
 		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 		{
 			buf[i] = '\0';

@@ -36,8 +36,7 @@ int _eputchar(char c)
 		i = 0;
 	}
 	if (c != BUF_FLUSH)
-		buf(i++) = c;
-	return (i);
+		buf[i++] = c;
 }
 
 /**
@@ -46,15 +45,15 @@ int _eputchar(char c)
  * @fd: file descriptor to write to
  * Return: no of chars put
  */
-int _putsfd(char *str, int fd)
+void _putsfd(char *str, int fd)
 {
 	int i = 0;
 
 	if (!str)
-		return;
+		return(0);
 	while (*str)
 	{
 		i += _putfd(*str++, fd);
-		return (i);
 	}
+	return (i);
 }
