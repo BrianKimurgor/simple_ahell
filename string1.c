@@ -20,7 +20,7 @@ char *_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	det[i] = 0;
+	dest[i] = 0;
 	return (dest);
 }
 
@@ -43,7 +43,7 @@ char *_strdup(const char *str)
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
 		return (NULL);
-	for (lenth++; length--;)
+	for (length++; length--;)
 		ret[length] = *--str;
 	return (ret);
 }
@@ -75,15 +75,15 @@ void _puts(char *str)
 
 int _putchar(char c)
 {
-	static int i;
 	static char buf[WRITE_BUF_SIZE];
+	static ssize_t i = 0;
 
-	if (c == BUFF_FLUSH || I >=WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
 		write(1, buff, i);
 		i = 0;
 	}
 	if (c != BUF_FLUSH)
 		buf[i++] = c;
-	return (i);
+	return (1);
 }
