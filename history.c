@@ -66,6 +66,10 @@ int read_history(info_t *info)
 
 	if (!filename)
 		return (0);
+	fd = open(filename, O_RDONLY);
+	free(filename);
+	if (fd == -1)
+		return (0);
 	if (!fstat(fd, &st))
 		fsize = st.st_size;
 	if (fsize < 2)
