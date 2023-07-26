@@ -50,16 +50,16 @@ int hsh(info_t *info, char **av)
  * Return: -1 if builtin not found,0 if exec succss,1 found not successful,-2 if exit
  */
 
-inf find_builtin(info_t *info)
+int find_builtin(info_t *info)
 {
 	int i, builtin_in_ret = -1;
-	builtin_table builtin[] = {
+	builtin_table builtinb1[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
 		{"history", _myhistory},
-		{"sentenv", _mysentev},
-		{"unsetenv", _myunsentenv},
+		{"setenv", _mysetenv},
+		{"unsetenv", _myunsetenv},
 		{"cd", _mycd},
 		{"alias", _myalias},
 		{NULL, NULL}
@@ -91,7 +91,7 @@ void find_cmd(info_t *info)
 		info->line_count++;
 		info->linecount_flag = 0;
 	}
-	for (i = 0; k = 0; info->arg[i]; i++)
+	for (i = 0, k = 0; info->arg[i]; i++)
 		if (!is_delim(info->arg[i], " \t\n"))
 			k++;
 	if (!k)
@@ -111,11 +111,9 @@ void find_cmd(info_t *info)
 		{
 			info->status = 127;
 			print_error(info, "not found\n";
-
-		}
-	}
-}
-
+					}
+					}
+					}
 /**
  * fork_cmd - forks an exec thread to run cmd
  * @info: the param & return info struct
@@ -135,21 +133,23 @@ return;
 }
 if (child_pid == 0)
 {
-	if (execve(info->path, info-.argv, get_environ(info)) == -1)
+	if (execve(info->path, info->argv, get_environ(info)) == -1)
 	{
 		free_info(info, 1);
 		if (errno = EACCES)
-			exit(1);
+			exit(126);
+		exit(1);
 	}
 	/* TODO: PUT ERROR FUNCTION */
 }
 else
 {
-	ait(&(info->status))
-	{
+	wait(&(info->status))
+		if (WIFEXITED(info->status))
+		{
 		info->status = WEXITSTATUS(info->status);
 		if (info->status == 126)
-			print_error(info, "Permision denied\");
-	}
+			print_error(info, "Permision denied\n");
+		}
 }
 }
