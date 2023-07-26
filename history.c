@@ -1,4 +1,4 @@
-#inlcude "shell.h"
+#include "shell.h"
 
 /**
  * get_history_file - gets the history file
@@ -13,9 +13,13 @@ char *get_history_file(info_t *info)
 	dir = _getenv(info, "HOME=");
 	if (!dir)
 		return NULL;
+	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
+	if (!buf)
+		return (NULL);
 	buf[0] = 0;
 	_strcpy(buf, dir);
 	_strcat(buf, "/");
+	_strcat(buf, HIST_FILE);
 	return (buf);
 }
 
@@ -38,6 +42,14 @@ int write_history(info_t *info)
 	free(filename);
 	if (fd == -1)
 	return (-1);
+	for (node = info->history; node; node = node->next)
+	{
+		_putfd(node->str, fd);
+		_putfd('\n', fd);
+	}
+	_putfd(BUF_FLUSH, fd);
+	close(fd);
+	return (1);
 }
 /**
  * read_history - read file
@@ -52,7 +64,7 @@ int read_history(info_t *info)
 	struct stat st;
 	char *buf = NULL, *filename =  get_history_file(info);
 
-	if (!namefile)
+	if (!filename)
 		return (0);
 	if (!fstat(fd, &st))
 		fsize = st.st_size;
@@ -62,7 +74,7 @@ int read_history(info_t *info)
 	if (!buf)
 		return (0);
 	rdlen = read(fd, buf, fsize);
-	buf[size] = 0;
+	buf[fsize] = 0;
 	if (rdlen <= 0)
 		return (free(buf), 0);
 	close(fd);
@@ -72,12 +84,12 @@ int read_history(info_t *info)
 		build_history_list(info, buf + last, linecount++);
 		last = i + 1;
 	}
-	if ( last != i)
+	if (last != i)
 		build_history_list(info, buf + last, linecount++);
 	free(buf);
 	info->histcount = linecount;
 	while (info->histcount-- >= HIST_MAX)
-		delete_node_at_index(&(info->history). 0);
+		delete_node_at_index(&(info->history), 0);
 	renumber_history(info);
 	return (info->histcount);
 }
@@ -90,7 +102,7 @@ int read_history(info_t *info)
  * Return: 0
  */
 
-int build_history_list(into_t *info, char *buf, int linecount)
+int build_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
 
@@ -110,7 +122,7 @@ int build_history_list(into_t *info, char *buf, int linecount)
  */
 int renumber_history(info_t *info)
 {
-	lit_t *node = info->history;
+	list_t *node = info->history;
 	int i = 0;
 	while (node)
 	{
