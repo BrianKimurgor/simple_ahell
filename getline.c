@@ -97,7 +97,7 @@ ssize_t _get_input(info_t *info)
 
 int _getline(info_t *info, char **ptr, size_t *length)
 {
-	static char buf[READ_BUF_SIZE];
+	static char buf[WRITE_BUF_SIZE];
 	static size_t i, len;
 	ssize_t k;
 	ssize_t r = 0, s = 0;
