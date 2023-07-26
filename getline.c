@@ -8,16 +8,15 @@ ssize_t read_buf(info_t *info, char *buf, size_t *len);
  * @buf: address to buffer
  * @len: var len address
  * Return: bytes read
- */
+ *
 
 ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
 	ssize_t r = 0;
 	size_t len_p = 0;
 
-	if (!*len) /* nothing left? fill it */
+	if (!*len)
 	{
-		/*nfree ((void **)info->cmd_buf);*/
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
@@ -45,11 +44,11 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 	return (r);
 }
 
-/**
+**
  * get_input - gets a line -new line
  * @info: parameter struct
  * Return: bytes read
- */
+ *
 
 ssize_t _get_input(info_t *info)
 {
@@ -89,7 +88,7 @@ ssize_t _get_input(info_t *info)
 	return (r);
 }
 
-/**
+**
  * _getline - getsthe next line of input from STDIN
  * @info: parameter struct
  * @ptr: addressof pointer to buffer

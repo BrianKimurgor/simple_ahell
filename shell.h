@@ -228,5 +228,9 @@ int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
 
+ssize_t get_input(info_t *info);
+ssize_t read_buf(info_t *info, char *buf, size_t *i);
+ssize_t input_buf(info_t *info, char **buf, size_t *len);
+
 #endif
 
