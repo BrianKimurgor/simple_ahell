@@ -45,7 +45,7 @@ char *_getenv(info_t *info, const char *name)
 
 int _mysetenv(info_t *info)
 {
-	info (info->argc != 3)
+	if (info->argc != 3)
 	{
 		_eputs("incorrect number of arguments\n");
 		return (1);
@@ -62,7 +62,7 @@ int _mysetenv(info_t *info)
  * Return: 0
  */
 
-int_myunsetenv(info_t *info)
+int _myunsetenv(info_t *info)
 {
 	int i;
 

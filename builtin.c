@@ -53,7 +53,7 @@ int _mycd(info_t *info)
 				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 	}
 	else
-		chdir_ret = chdir(info->argv[1]1);
+		chdir_ret = chdir(info->argv[1]);
 	if (chdir_ret == -1)
 	{
 		print_error(info, "can not cd to ");
