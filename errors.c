@@ -37,6 +37,8 @@ int _eputchar(char c)
 	}
 	if (c != BUF_FLUSH)
 		buf[i++] = c;
+
+	return 1;
 }
 
 /**
@@ -45,7 +47,7 @@ int _eputchar(char c)
  * @fd: file descriptor to write to
  * Return: no of chars put
  */
-void _putsfd(char *str, int fd)
+int _putsfd(char *str, int fd)
 {
 	int i = 0;
 

@@ -10,14 +10,14 @@ char **get_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
-		info->environ = list_to_string(info->environ);
+		info->environ = list_to_strings(info->environ);
 		info->env_changed = 0;
 	}
 	return (info->environ);
 }
 
 /**
- * _unsetev - emove an environ variable
+ * _unsetenv - remove an environ variable
  * @info: struc
  * @var: string env var property
  * Return: 1on delete 0 otherwise
@@ -36,7 +36,7 @@ int _unsetenv(info_t *info, var *var)
 		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
-			info->env_change = delete_node_at_index(&(info->env), i);
+			info->env_changed = delete_node_at_index(&(info->env), i);
 
 			i = 0;
 			node = info->env;
@@ -70,7 +70,7 @@ int _setenv(info_t *info, char *var, char *value)
 		return (1);
 	_strcpy(buf, var);
 	_strcat(buf, value);
-	_strcat(vuf, "=");
+	_strcat(buf, "=");
 	node = info->env;
 	while (node)
 	{
