@@ -1,4 +1,4 @@
-#include   "shell.h"
+#include "shell.h"
 
 /**
  *
@@ -52,8 +52,8 @@ int hsh(info_t *info, char **av)
 
 int find_builtin(info_t *info)
 {
-	int i, builtin_in_ret = -1;
-	builtin_table builtinb1[] = {
+	int i, built_in_ret = -1;
+	builtin_table builtintb1[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
@@ -64,11 +64,12 @@ int find_builtin(info_t *info)
 		{"alias", _myalias},
 		{NULL, NULL}
 	};
-	for (i = 0; builtinbl[i].type; i++)
-		if (_strcmp(info->argv[0], builtinbl[i].type) == 0)
+
+	for (i = 0; builtintb1[i].type; i++)
+		if (_strcmp(info->argv[0], builtintb1[i].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtinbl.func(info);
+			built_in_ret = builtintb1.func(info);
 			break;
 		}
 	return (built_in_ret);
@@ -84,7 +85,6 @@ void find_cmd(info_t *info)
 {
 	char *path = NULL;
 	int i, k;
-
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
 	{
@@ -104,16 +104,15 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || _getenv(info, "PATH=")
-					|| info->arg[0][0] == '/') && is_cmd(info, info->arg[0]))
+		if ((interactive(info) || _getenv(info, "PATH=") || info->arg[0][0] == '/') && is_cmd(info, info->arg[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
-			print_error(info, "not found\n";
-					}
-					}
-					}
+			print_error(info, "not found\n");
+		}
+	}
+}
 /**
  * fork_cmd - forks an exec thread to run cmd
  * @info: the param & return info struct
@@ -122,34 +121,34 @@ void find_cmd(info_t *info)
 
 void fork_cmd(info_t *info)
 {
-pid_t child_pid;
+	pid_t child_pid;
 
-child_pid = fork();
-if (child_pid == -1)
-{
-/* TODO: PUT ERROR FUNCTION */
-perror("Error:");
-return;
-}
-if (child_pid == 0)
-{
-	if (execve(info->path, info->argv, get_environ(info)) == -1)
+	child_pid = fork();
+	if (child_pid == -1)
 	{
-		free_info(info, 1);
-		if (errno = EACCES)
-			exit(126);
-		exit(1);
+		/* TODO: PUT ERROR FUNCTION */
+		perror("Error:");
+		return;
 	}
-	/* TODO: PUT ERROR FUNCTION */
-}
-else
-{
-	wait(&(info->status))
+	if (child_pid == 0)
+	{
+		if (execve(info->path, info->argv, get_environ(info)) == -1)
+		{
+			free_info(info, 1);
+			if (errno = EACCES)
+			exit(126);
+			exit(1);
+		}
+		/* TODO: PUT ERROR FUNCTION */
+	}
+	else
+	{
+		wait(&(info->status));
 		if (WIFEXITED(info->status))
 		{
-		info->status = WEXITSTATUS(info->status);
-		if (info->status == 126)
-			print_error(info, "Permision denied\n");
+			info->status = WEXITSTATUS(info->status);
+			if (info->status == 126)
+				print_error(info, "Permision denied\n");
 		}
-}
+	}
 }
