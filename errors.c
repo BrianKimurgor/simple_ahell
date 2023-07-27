@@ -38,10 +38,11 @@ int _eputchar(char c)
 	if (c != BUF_FLUSH)
 		buf[i++] = c;
 
-	return 1;
+	return (1);
 }
 
-/** _putfd - writes char c to given fd
+/**
+ * _putfd - writes char c to given fd
  * @c: char to print
  * @fd: filedescrip to write
  * Return: i
@@ -74,7 +75,7 @@ int _putsfd(char *str, int fd)
 	int i = 0;
 
 	if (!str)
-		return(0);
+		return (0);
 	while (*str)
 	{
 		i += _putfd(*str++, fd);

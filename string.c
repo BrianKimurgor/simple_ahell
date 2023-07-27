@@ -12,7 +12,8 @@ int _strlen(char *s)
 
 	if (!s)
 		return (0);
-	while ( *s){
+	while (*s)
+	{
 		i++;
 		s++;
 	}
@@ -24,7 +25,7 @@ int _strlen(char *s)
  * _strcmp - performs lexicogarphic comparison of two strings
  * @s1: first string
  * @s2: second string
- * Retuen: - | + | 0
+ * Return: - | + | 0
  */
 
 int _strcmp(char *s1, char *s2)
@@ -52,7 +53,8 @@ int _strcmp(char *s1, char *s2)
 
 char *starts_with(const char *haystack, const char *needle)
 {
-	while (*needle){
+	while (*needl)
+	{
 		if (*needle++ != *haystack++)
 			return (NULL);
 		needle++;
