@@ -1,10 +1,8 @@
 #include "shell.h"
 
 /**
- *
  * hsh - main shell loop
  * @info: the param and the return info struct
- * @av: the argument vector from the main()
  * Return: 0 on success, 1 on error, or error code
  */
 
@@ -59,7 +57,7 @@ int _unsetenv(info_t *, char *);
 /**
  * find_builtin - finds a builtin command
  * @info: the param & return into struct
- * Return: -1 if builtin not found,0 if exec succss,1 found not successful,-2 if exit
+ * Return: -1 if builtin not found -2 if exit
  */
 
 int find_builtin(info_t *info)
@@ -88,7 +86,7 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd_ - finds a command in PATH
+ * find_cmd - finds a command in PATH
  * @info: the param & return info struct
  * Return: void
  */
@@ -97,7 +95,9 @@ void find_cmd(info_t *info)
 {
 	char *path = NULL;
 	int i, k;
+
 	info->path = info->argv[0];
+
 	if (info->linecount_flag == 1)
 	{
 		info->line_count++;
@@ -116,7 +116,8 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || _getenv(info, "PATH=") || info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+		if ((interactive(info) || _getenv(info, "PATH=")
+					|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
