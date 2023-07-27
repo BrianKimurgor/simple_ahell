@@ -7,7 +7,7 @@ ssize_t read_buf(info_t *info, char *buf, size_t *len);
  * Return: bytes read
  */
 
-ssize_t _get_input(info_t *info)
+ssize_t get_input(info_t *info)
 {
         static char *buf;
         static size_t i, j, len;

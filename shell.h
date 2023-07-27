@@ -12,6 +12,8 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <signal.h>
+
 
 /* for read/write buffers */
 #define CMD_NORM   0
@@ -181,6 +183,7 @@ int _myalias(info_t *);
 
 /* toem_getline.c */
 ssize_t get_input(info_t *);
+ssize_t read_buf(info_t *info, char *buf, size_t *len);
 int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
 
