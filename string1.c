@@ -2,7 +2,6 @@
 
 
 /**
- *
  * _strcpy - copies sting
  * @dest: destination
  * @src: source
@@ -14,7 +13,7 @@ char *_strcpy(char *dest, char *src)
 	int i = 0;
 
 	if (dest == src || src == 0)
-		return ( dest);
+		return (dest);
 	while (src[i])
 	{
 		dest[i] = src[i];
@@ -26,7 +25,7 @@ char *_strcpy(char *dest, char *src)
 
 
 /**
- * _strdup - duplicates string
+ * *_strdup - duplicates string
  * @str: string to duplicate
  * Return: pointer to dup
  */
@@ -76,7 +75,7 @@ void _puts(char *str)
 int _putchar(char c)
 {
 	static char buf[WRITE_BUF_SIZE];
-	static ssize_t i = 0;
+	static ssize_t i;
 
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{

@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * get_environ - returns string array copy of our environ
+ * **get_environ - returns string array copy of our environ
  * @info: sruc containing arguments maintaining func prototype
- * Retrun: 0
+ * Return: 0
  */
 
 char **get_environ(info_t *info)

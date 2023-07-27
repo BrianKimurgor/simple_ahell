@@ -41,10 +41,6 @@ int is_chain(info_t *info, char *buf, size_t *p)
  * @p: address to current position in buf
  * @i: starting position in buf
  * @len: buf length
-<<<<<<< HEAD
- * @i: i
-=======
->>>>>>> c062e4a02c566ff675e66be480a6f5550692be25
  * Return: void
  */
 
