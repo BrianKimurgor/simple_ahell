@@ -2,8 +2,12 @@
 
 /**
  * get_environ - returns string array copy of our environ
- * @info: sruc containing arguments maintaining func prototype
- * Retrun: 0
+ * @info: sructure containing potential arguments.
+ * Used to  maintain constant function prototype
+ * Retrun: a pointer to a string array containing a copy
+ *  of the environment if successful, or NULL in case of
+ *  an error or the environment variables have not been
+ *  set yet.
  */
 
 char **get_environ(info_t *info)

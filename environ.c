@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _myenx - prints current environment
+ * _myenv - prints current environment
  * @info: structure with potential arguments,
  * for maintaining constant function prototype
  * Return: 0
