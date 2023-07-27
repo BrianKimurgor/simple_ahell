@@ -8,6 +8,15 @@
  * Return: 0 on success, 1 on error, or error code
  */
 
+int _myexit(info_t *info);
+int _myenv(info_t *info);
+int _myhelp(info_t *info);
+int _myhistory(info_t *info);
+int _mysetenv(info_t *info);
+int _myunsetenv(info_t *info);
+int _mycd(info_t *info);
+int _myalias(info_t *info);
+
 int hsh(info_t *info, char **av)
 {
 	ssize_t r = 0;
