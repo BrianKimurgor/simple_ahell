@@ -72,9 +72,5 @@ char *_strchr(char *s, char c)
 		if (*s == c)
 			return (s);
 	} while (*s++ != '\0');
-<<<<<<< HEAD
-=======
-
->>>>>>> 2712fd6f7ffce040fdc16413cb13ff27d12b58ba
 	return (NULL);
 }

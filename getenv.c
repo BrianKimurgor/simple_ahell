@@ -1,19 +1,9 @@
 #include "shell.h"
 
 /**
-<<<<<<< HEAD
  * **get_environ - returns string array copy of our environ
  * @info: sruc containing arguments maintaining func prototype
  * Return: 0
-=======
- * get_environ - returns string array copy of our environ
- * @info: sructure containing potential arguments.
- * Used to  maintain constant function prototype
- * Retrun: a pointer to a string array containing a copy
- *  of the environment if successful, or NULL in case of
- *  an error or the environment variables have not been
- *  set yet.
->>>>>>> 2712fd6f7ffce040fdc16413cb13ff27d12b58ba
  */
 
 char **get_environ(info_t *info)
