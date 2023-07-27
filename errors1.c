@@ -20,7 +20,7 @@ int _erratoi(char *s)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
 		{
-			result *=10;
+			result *= 10;
 			result += (s[i] - '0');
 			if (result > INT_MAX)
 				return (-1);
@@ -39,7 +39,7 @@ int _erratoi(char *s)
  * -1 on error
  */
 
-void print_error (info_t *info, char *estr)
+void print_error(info_t *info, char *estr)
 {
 	_eputs(info->fname);
 	_eputs(": ");
@@ -65,7 +65,7 @@ int print_d(int input, int fd)
 
 	if (fd == STDERR_FILENO)
 		__putchar = _eputchar;
-	if (input < 0 )
+	if (input < 0)
 	{
 		_abs_ = -input;
 		__putchar('-');
@@ -90,14 +90,14 @@ int print_d(int input, int fd)
 }
 
 /**
- * conert_number - converter function
+ * convert_number - converter function
  * @num: number
  * @base: base
  * @flags: argument flags
  * Return: string
  */
 
-char *convert_number( long int num, int base, int flags)
+char *convert_number(long int num, int base, int flags)
 {
 	static char *array;
 	static char buffer[50];
@@ -117,7 +117,7 @@ char *convert_number( long int num, int base, int flags)
 	do {
 		*--ptr = array[n % base];
 		n /= base;
-	} while (n != 0 );
+	} while (n != 0);
 
 	if (sign)
 		*--ptr = sign;
@@ -125,7 +125,7 @@ char *convert_number( long int num, int base, int flags)
 }
 /**
  * remove_comments - function replaces first instance of '#' with '\0'
- * @buff: address of the string to modify
+ * @buf: address of the string to modify
  * Return: 0
  */
 
