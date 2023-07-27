@@ -12,7 +12,7 @@ char *get_history_file(info_t *info)
 
 	dir = _getenv(info, "HOME=");
 	if (!dir)
-		return NULL;
+		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
@@ -24,9 +24,9 @@ char *get_history_file(info_t *info)
 }
 
 /**
- * write_history - create or append to existging file
- * @info: param struct
- * Rerurn: 1 0r -1
+ * write_history - creats a file, or appends to an existging file
+ * @info: the parameter struct
+ * Return: 1 on success, else  -1
  */
 
 int write_history(info_t *info)
@@ -82,9 +82,10 @@ int read_history(info_t *info)
 	if (rdlen <= 0)
 		return (free(buf), 0);
 	close(fd);
-	for (i = 0; i < fsize; i++);
+	for (i = 0; i < fsize; i++)
 	if (buf[i] == '\n')
-	{buf[i] = 0;
+	{
+		buf[i] = 0;
 		build_history_list(info, buf + last, linecount++);
 		last = i + 1;
 	}
@@ -99,7 +100,7 @@ int read_history(info_t *info)
 }
 
 /**
- * build_hitory_list - adds entry to a history linked list
+ * build_history_list - adds entry to a history linked list
  * @info: struct containing potential arg
  * @buf: buffer
  * @linecount: history line count
@@ -128,6 +129,7 @@ int renumber_history(info_t *info)
 {
 	list_t *node = info->history;
 	int i = 0;
+
 	while (node)
 	{
 		node->num = i++;
